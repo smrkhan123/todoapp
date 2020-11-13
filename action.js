@@ -19,6 +19,7 @@ function edit(id) {
 function update(id) {
     tsk[id] = document.getElementById("task").value;
     show();
+    document.getElementById('form').innerHTML = "Add Task: <input type='text' id='task'><input type='button' onclick='addTask()' id='submit' value='Submit'>"
 }
 
 function del(id) {
@@ -27,11 +28,12 @@ function del(id) {
 }
 function check(id){
     chk.push(tsk[id]);
+    console.log(chk);
     tsk.splice(id,1);
     show();
     var html = "";
     for(var i = 0; i<chk.length; i++){
-        html += "<li><input type='checkbox' id='"+ id +"' onclick='uncheck("+ id +")' checked>"+ chk[id] + "<button type='button' onclick='edit'>Edit</button><button type='button' onclick='delete'>Delete</button></li>";
+        html += "<li><input type='checkbox' id='"+ id +"' onclick='uncheck("+ i +")' checked>"+ chk[i] + "<button type='button' onclick='edt("+i+")'>Edit</button><button type='button' onclick='dlt("+i+")'>Delete</button></li>";
     }
     document.getElementById("completedTasks").innerHTML = html;
 }
@@ -41,7 +43,27 @@ function uncheck(value) {
     chk.splice(value,1);
     var html = "";
     for(var i = 0; i<chk.length; i++){
-        html += "<li><input type='checkbox' id='"+ id +"' onclick='uncheck("+ id +")' checked>"+ chk[id] + "<button type='button' onclick='edit'>Edit</button><button type='button' onclick='delete'>Delete</button></li>";
+        html += "<li><input type='checkbox' id='"+ i +"' onclick='uncheck("+ i +")' checked>"+ chk[i] + "<button type='button' onclick='edt("+i+")'>Edit</button><button type='button' onclick='dlt("+i+")'>Delete</button></li>";
     }
     document.getElementById("completedTasks").innerHTML = html;
+}
+function dlt(id) {
+    chk.splice(id,1);
+    var html = "";
+    for(var i = 0; i<chk.length; i++){
+        html += "<li><input type='checkbox' id='"+ id +"' onclick='uncheck("+ i +")' checked>"+ chk[i] + "<button type='button' onclick='edt("+i+")'>Edit</button><button type='button' onclick='dlt("+i+")'>Delete</button></li>";
+    }
+    document.getElementById("completedTasks").innerHTML = html;
+}
+function edt(id) {
+    document.getElementById('form').innerHTML = "Update Task: <input type='text' id='task' value='"+chk[id]+"'><input type='button' onclick='updt("+id+")' id='submit' value='Update'>"
+}
+function updt(id) {
+    chk[id] = document.getElementById("task").value;
+    var html = "";
+    for(var i = 0; i<chk.length; i++){
+        html += "<li><input type='checkbox' id='"+ id +"' onclick='uncheck("+ i +")' checked>"+ chk[i] + "<button type='button' onclick='edt("+i+")'>Edit</button><button type='button' onclick='dlt("+i+")'>Delete</button></li>";
+    }
+    document.getElementById("completedTasks").innerHTML = html;
+    document.getElementById('form').innerHTML = "Add Task: <input type='text' id='task'><input type='button' onclick='addTask()' id='submit' value='Submit'>"
 }
