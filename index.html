@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Todo App</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="action.js"></script>
+</head>
+<body>
+    <form id="form">
+        Add Task: <input type="text" id="task">
+        <input type="button" onclick="addTask()" id="submit" value="Submit">
+    </form>
+    <h2>Tasks</h2>
+    <p >
+        <ul id="taskstocomplete"></ul>
+    </p>
+    <h2>Completed Tasks</h2>
+    <p >
+        <ul id="completedTasks"></ul>
+    </p>
+</body>
+</html>
