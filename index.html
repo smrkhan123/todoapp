@@ -4,21 +4,63 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Todo App</title>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="action.js"></script>
+    <style>
+        .hide {
+            display: none;
+        }
+        #form {
+            margin-top: 100px;
+        }
+        #form div p {
+            font-size: 30px;
+            font-weight: 600;
+        }
+        #form input {
+            margin-bottom: 20px;
+        }
+        .btn-xs {
+            margin: 0px 10px;
+        }
+        .chkd {
+            margin: 0px 10px;
+        }
+    </style>
 </head>
-<body>
-    <form id="form">
-        Add Task: <input type="text" id="task">
-        <input type="button" onclick="addTask()" id="submit" value="Submit">
-    </form>
-    <h2>Tasks</h2>
-    <p >
-        <ul id="taskstocomplete"></ul>
-    </p>
-    <h2>Completed Tasks</h2>
-    <p >
-        <ul id="completedTasks"></ul>
-    </p>
+<body style="background-image: url('https://images.unsplash.com/photo-1579546929518-9e396f3cc809?ixlib=rb-1.2.1&auto=format&fit=crop&w=1500&q=80');">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4 col-lg-4"></div>
+            <div class="col-md-4 col-lg-4">
+                <form id="form">
+                    <div class="text-center"><p>Add Task</p></div>
+                    <input type="text" id="task" class="form-control">
+                    <input type="button" class="btn btn-success form-control" onclick="addTask()" id="submit" value="Submit">
+                </form>
+                <div id="alltasks" class="hide">
+                    <h2>Tasks</h2>
+                    <p >
+                        <ul id="taskstocomplete"></ul>
+                    </p>
+                </div>
+                <div id="completed" class="hide">
+                    <h2>Completed Tasks</h2>
+                    <p >
+                        <ul id="completedTasks"></ul>
+                    </p>
+                </div>
+            </div>
+            <div class="col-md-4 col-lg-4"></div>
+        </div>
+    </div>
 </body>
 </html>
